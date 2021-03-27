@@ -1,0 +1,22 @@
+DHCP Configuration on Router for first network
+Router>enable
+Router#confure terminal
+Router(config)#ip dhcp pool router4
+Router(dhcp-config)#network 192.168.1.0 255.255.255.0
+Router(dhcp-config)#default-router 192.168.1.1
+Router(dhcp-config)#dns-server 192.168.3.2
+Router(dhcp-config)#exit
+Router(config)#int f0/0
+Router(config-if)#ip add 192.168.1.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config)#ip dhcp excluded-address 192.168.1.2
+
+DHCP Configuration on Router for 2nd network
+Router(config)#ip dhcp pool r1
+Router(dhcp-config)#network 192.168.3.0 255.255.255.0
+Router(dhcp-config)#default-router 192.168.3.1
+Router(dhcp-config)#dns-server 192.168.3.2
+Router(dhcp-config)#exit
+Router(config)#int f0/0
+Router(config-if)#ip add 192.168.3.1 255.255.255.0
+Router(config-if)#no shutdown
