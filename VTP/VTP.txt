@@ -1,0 +1,102 @@
+vlan 10 sales
+vlan 20 marketing
+vlan 30 admin
+
+Assign ip address to all pc of the network.
+pc0
+ip address - 192.168.1.126
+subnet mask - 255.255.255.128
+default gateway - 192.168.1.1
+
+pc3
+ip address - 192.168.1.2
+subnet mask - 255.255.255.128
+default gateway - 192.168.1.1
+
+pc1
+ip address - 192.168.1.190
+subnet mask - 255.255.255.192
+default gateway - 192.168.1.129
+
+pc4
+ip address - 192.168.1.130
+subnet mask - 255.255.255.192
+default gateway - 192.168.1.129
+
+pc2
+ip address - 192.168.1.195
+subnet mask - 255.255.255.240
+default gateway - 192.168.1.193
+
+pc5
+ip address - 192.168.1.194
+subnet mask - 255.255.255.240
+default gateway - 192.168.1.193
+
+Configure Server Switch
+Switch>enable
+Switch#configure terminal
+Switch(config)#vtp mode server
+Switch(config)#vtp domain office
+Switch(config)#vlan 10
+Switch(config-vlan)#name sales
+Switch(config-vlan)#vlan 20
+Switch(config-vlan)#name marketing
+Switch(config-vlan)#vlan 30
+Switch(config-vlan)#name admin
+
+Configure Trunking on Server Switch
+Switch>enable
+Switch#configure terminal
+Switch(config)#interface fa0/2
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#switchport trunk allowed vlan all
+Switch(config-if)#interface fa0/3
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#switchport trunk allowed vlan all
+Switch(config-if)#interface fa0/1
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#switchport trunk allowed vlan all
+
+Configure Port assignment to vlans on Client Switch1
+Switch>enable
+Switch#configure terminal
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#interface fastEthernet 0/2
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#interface fastEthernet 0/3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 30
+
+Configure Port assignment to vlans on Client Switch2
+Switch>enable
+Switch#configure terminal
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#interface fastEthernet 0/2
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#interface fastEthernet 0/3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 30
+
+Configure Router
+Router>enable
+Router#configure terminal
+Router(config)#interface fastEthernet 0/0
+Router(config-if)#no shutdown
+Router(config-if)#interface fastEthernet 0/0.10
+Router(config-subif)#encapsulation dot1Q 10
+Router(config-subif)#ip address 192.168.1.1 255.255.255.128
+Router(config-if)#interface fastEthernet 0/0.20
+Router(config-subif)#encapsulation dot1Q 20
+Router(config-subif)#ip address 192.168.1.129 255.255.255.192
+Router(config-if)#interface fastEthernet 0/0.30
+Router(config-subif)#encapsulation dot1Q 30
+Router(config-subif)#ip address 192.168.1.193 255.255.255.240
+
+
