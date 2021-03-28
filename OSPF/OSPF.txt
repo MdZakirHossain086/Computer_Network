@@ -1,0 +1,34 @@
+Configuration OSPF on Router0
+Router>
+Router>enable
+Router#configure terminal
+Router(config)#interface fa0/0
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#interface se2/0
+Router(config-if)#ip address 10.0.0.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#router ospf 12
+Router(config-router)#network 192.168.1.0 0.0.0.255 area 1
+Router(config-router)#network 10.0.0.0 0.0.0.255 area 0
+
+Configuration OSPF on Router1
+Router>
+Router>enable
+Router#configure terminal
+Router(config)#interface fa0/0
+Router(config-if)#ip address 192.168.2.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config)#interface fa1/0
+Router(config-if)#ip address 192.168.3.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#interface se2/0
+Router(config-if)#ip address 10.0.0.2 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#router ospf 11
+Router(config-router)#network 192.168.2.0 0.0.0.255
+Router(config-router)#network 192.168.2.0 0.0.0.255 area 1
+Router(config-router)#network 192.168.3.0 0.0.0.255 area 1
+Router(config-router)#network 10.0.0.0 0.0.0.255 area 0
