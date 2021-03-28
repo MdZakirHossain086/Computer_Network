@@ -1,0 +1,23 @@
+Configure NAT on Router0
+Router>enable
+Router#configure terminal
+Router(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.2
+Router(config)#interface f0/0
+Router(config-if)#ip nat in
+Router(config-if)#interface s2/0
+Router(config-if)#ip nat out
+Router(config-if)#ip nat in source static 192.168.1.2 100.100.100.100
+Router(config)#exit
+Router#show ip nat translations
+
+Configure NAT on Router1
+Router>enable
+Router#configure terminal
+Router(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
+Router(config)#interface f0/0
+Router(config-if)#ip nat in
+Router(config-if)#interface s2/0
+Router(config-if)#ip nat out
+Router(config-if)#ip nat in source static 192.168.2.2 10.10.10.10
+Router(config)#exit
+Router#show ip nat translations 
