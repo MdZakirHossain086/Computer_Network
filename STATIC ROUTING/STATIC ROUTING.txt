@@ -1,0 +1,23 @@
+Configuration on Router0
+Router>enable
+Router#configure terminal
+Router(config)#int f0/0
+Router(config-if)#ip add 192.168.1.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#int s2/0
+Router(config-if)#ip add 192.168.3.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#ip route 192.168.2.0 255.255.255.0 192.168.3.2
+
+Configuration on Router1
+Router>enable
+Router#configure terminal
+Router(config)#int f0/0
+Router(config-if)#ip add 192.168.2.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#int s2/0
+Router(config-if)#ip add 192.168.3.2 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+Router(config)#ip route 192.168.1.0 255.255.255.0 192.168.3.1
