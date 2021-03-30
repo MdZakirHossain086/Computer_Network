@@ -1,4 +1,4 @@
-Configure ACL on Router0 to deny host PC0(192.168.1.2) and permit all other
+##########Configure ACL on Router0 to deny host PC0(192.168.1.2) and permit all other##########
 Router>enable
 Router#configure terminal
 Router(config)#access-list 1 deny host 192.168.1.2
@@ -6,7 +6,7 @@ Router(config)#access-list 1 permit any
 Router(config)#interface s2/0
 Router(config-if)#ip access-group 1 out
 
-Configure ACL on Router1 to deny network(192.168.2.0)
+##########Configure ACL on Router1 to deny network(192.168.2.0)##########
 Router>enable
 Router#confure terminal
 Router(config)#access-list 1 deny 192.168.2.0 0.0.0.255
