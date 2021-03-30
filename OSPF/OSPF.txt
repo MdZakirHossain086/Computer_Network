@@ -1,5 +1,4 @@
-Configuration OSPF on Router0
-Router>
+##########Configuration OSPF on Router0##########
 Router>enable
 Router#configure terminal
 Router(config)#interface fa0/0
@@ -13,8 +12,7 @@ Router(config)#router ospf 12
 Router(config-router)#network 192.168.1.0 0.0.0.255 area 1
 Router(config-router)#network 10.0.0.0 0.0.0.255 area 0
 
-Configuration OSPF on Router1
-Router>
+##########Configuration OSPF on Router1##########
 Router>enable
 Router#configure terminal
 Router(config)#interface fa0/0
