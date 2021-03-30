@@ -1,4 +1,4 @@
-Configuration VLAN on Switch0
+##########Configuration VLAN on Switch0##########
 Switch>enable
 Switch#configure terminal
 Switch(config)#vlan 10
@@ -21,7 +21,7 @@ Switch(config-if)#exit
 Switch(config)#int f0/5
 Switch(config-if)#switchport mode trunk
 
-Configuration VLAN on Switch1
+##########Configuration VLAN on Switch1##########
 Switch>enable
 Switch#configure terminal
 Switch(config)#vlan 10
