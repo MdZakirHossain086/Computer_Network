@@ -3,37 +3,37 @@ vlan 20 marketing
 vlan 30 admin
 
 Assign ip address to all pc of the network.
-pc0
+#####pc0#####
 ip address - 192.168.1.126
 subnet mask - 255.255.255.128
 default gateway - 192.168.1.1
 
-pc3
+#####pc3#####
 ip address - 192.168.1.2
 subnet mask - 255.255.255.128
 default gateway - 192.168.1.1
 
-pc1
+#####pc1#####
 ip address - 192.168.1.190
 subnet mask - 255.255.255.192
 default gateway - 192.168.1.129
 
-pc4
+#####pc4#####
 ip address - 192.168.1.130
 subnet mask - 255.255.255.192
 default gateway - 192.168.1.129
 
-pc2
+#####pc2#####
 ip address - 192.168.1.195
 subnet mask - 255.255.255.240
 default gateway - 192.168.1.193
 
-pc5
+#####pc5#####
 ip address - 192.168.1.194
 subnet mask - 255.255.255.240
 default gateway - 192.168.1.193
 
-Configure Server Switch
+##########Configure Server Switch##########
 Switch>enable
 Switch#configure terminal
 Switch(config)#vtp mode server
@@ -45,7 +45,7 @@ Switch(config-vlan)#name marketing
 Switch(config-vlan)#vlan 30
 Switch(config-vlan)#name admin
 
-Configure Trunking on Server Switch
+##########Configure Trunking on Server Switch##########
 Switch>enable
 Switch#configure terminal
 Switch(config)#interface fa0/2
@@ -58,7 +58,7 @@ Switch(config-if)#interface fa0/1
 Switch(config-if)#switchport mode trunk
 Switch(config-if)#switchport trunk allowed vlan all
 
-Configure Port assignment to vlans on Client Switch1
+##########Configure Port assignment to vlans on Client Switch1##########
 Switch>enable
 Switch#configure terminal
 Switch(config)#interface fastEthernet 0/1
@@ -71,7 +71,7 @@ Switch(config-if)#interface fastEthernet 0/3
 Switch(config-if)#switchport mode access
 Switch(config-if)#switchport access vlan 30
 
-Configure Port assignment to vlans on Client Switch2
+##########Configure Port assignment to vlans on Client Switch2##########
 Switch>enable
 Switch#configure terminal
 Switch(config)#interface fastEthernet 0/1
