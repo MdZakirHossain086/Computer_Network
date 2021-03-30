@@ -1,0 +1,45 @@
+Configuration VLAN on Switch0
+Switch>enable
+Switch#configure terminal
+Switch(config)#vlan 10
+Switch(config-vlan)#name IT
+Switch(config-vlan)#vlan 20
+Switch(config-vlan)#name HR
+Switch(config-vlan)#int f0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#int f0/2
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#int f0/3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#int f0/4
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#exit
+Switch(config)#int f0/5
+Switch(config-if)#switchport mode trunk
+
+Configuration VLAN on Switch1
+Switch>enable
+Switch#configure terminal
+Switch(config)#vlan 10
+Switch(config-vlan)#name IT
+Switch(config-vlan)#vlan 20
+Switch(config-vlan)#name HR
+Switch(config-vlan)#int f0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#int f0/2
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#int f0/3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#int f0/4
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#exit
+Switch(config)#int f0/5
+Switch(config-if)#switchport mode trunk
