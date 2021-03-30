@@ -1,4 +1,4 @@
-Configuration of RIP on Router0
+##########Configuration of RIP on Router0##########
 Router>enable
 Router#configure terminal
 Router(config)#interface f0/0
@@ -13,7 +13,7 @@ Router(config-router)#version 2
 Router(config-router)#network 192.168.1.0 255.255.255.0
 Router(config-router)#network 10.0.0.0 255.255.255.0
 
-Configuration of RIP on Router1
+##########Configuration of RIP on Router1##########
 Router>enable
 Router#configure terminal
 Router(config)#interface f0/0
